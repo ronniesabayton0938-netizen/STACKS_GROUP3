@@ -13,5 +13,6 @@ public class Main {
         }else{
             System.out.println("You Stoopid, Invalid Input.");
         }
+        System.out.println("Goodbye!");
     }
 }
