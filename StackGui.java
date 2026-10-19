@@ -73,7 +73,7 @@ private void createGUI(){
 
         stackPanel = new JPanel();
         stackPanel.setLayout(new BoxLayout(stackPanel, BoxLayout.Y_AXIS));
-    stackPanel.setBorder(
+        stackPanel.setBorder(
                 BorderFactory.createTitledBorder("STACK")
         );
 
