@@ -15,7 +15,7 @@ import java.util.Random;
  * Subject:DATA STRUCTURES & ALGORITHM
  *
  * Last Modified: October 19, 2026
- * Version: 1.0
+ * Version: 1.1
  */
 
 public class StackGUI extends JFrame {
@@ -45,7 +45,7 @@ public class StackGUI extends JFrame {
         createGUI();
         updateStackDisplay();
     }
-*/ leave this part empty, proceed to line 49
+
 private void createGUI(){
     setLayout(new BorderLayout(10, 10));
 
@@ -93,3 +93,4 @@ private void createGUI(){
         checkButton.addActionListener(e -> checkStack());
         randomButton.addActionListener(e -> randomStack());
 }
+
