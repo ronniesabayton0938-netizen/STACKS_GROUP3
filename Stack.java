@@ -17,15 +17,14 @@ public class Stack {
   private int [] elements;
   private int top;
   private static final int MAX_CAPACITY = 10;
-  elements = new int[MAX_CAPACITY];
-  top = -1;
-}
-
-public boolean push(int value) {
-  if (top == MAX_CAPACITY - 1) {
-    return false;
-  }
+  
   public Stack() {
-    
+    elements = new int[MAX_CAPACITY];
+    top = -1;
+  }
+  public boolean push(int value) {
+    if (top == MAX_CAPACITY - 1) {
+      return false;
+    }
   }
 }
