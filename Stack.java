@@ -15,65 +15,60 @@ package stackvisualization;
  */
 
 public class Stack {
+  private int[] elements;
+  private int top;
+  private static final int MAX_CAPACITY = 10;
 
-private int[] elements;
-private int top;
-private static final int MAX_CAPACITY = 10;
+  public Stack() {
+    elements = new int[MAX_CAPACITY];
+    top = -1;
+  }
 
-public Stack() {
-elements = new int[MAX_CAPACITY];
-top = -1;
-}
+  public boolean push(int value) {
+    if (top == MAX_CAPACITY - 1) {
+      return false;
+    }
+    top++;
+    elements[top] = value;
+    return true;
+  }
 
-public boolean push(int value) {
-if (top == MAX_CAPACITY - 1) {
-return false;
-}
+  public int pop() {
+    if (isEmpty()) {
+      return -1;
+    }
+    int value = elements[top];
+    top--;
+    return value;
+  }
+  
+  public int peek() {
+    if (isEmpty()) {
+      return -1;
+    }
+    return elements[top];
+  }
 
-top++;
-elements[top] = value;
-return true;
-}
+  public boolean isEmpty() {
+    return top == -1;
+  }
 
-public int pop() {
-if (isEmpty()) {
-return -1;
-}
+  public int size() {
+    return top + 1;
+  }
 
-int value = elements[top];
-top--;
-return value;
-}
+  public void clear() {
+    top = -1;
+  }
 
-public int peek() {
-if (isEmpty()) {
-return -1;
-}
+  public int get(int index) {
+    if (index < 0 || index > top) {
+      return -1;
+    }
+    return elements[index];
+  }
 
-return elements[top];
-}
-
-public boolean isEmpty() {
-return top == -1;
-}
-
-public int size() {
-return top + 1;
-}
-
-public void clear() {
-top = -1;
-}
-
-public int get(int index) {
-if (index < 0 || index > top) {
-return -1;
-}
-
-return elements[index];
-}
-
-public int getCapacity() {
-return MAX_CAPACITY;
-}
+  public int getCapacity() {
+    return MAX_CAPACITY;
+  }
 }
