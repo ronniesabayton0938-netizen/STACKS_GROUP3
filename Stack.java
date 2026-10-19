@@ -48,6 +48,7 @@ public class Stack {
     return elements[top];
 }
   public boolean isEmpty(){
+    return top ==-1;
   }    
   public int size(){
     return top +1;
