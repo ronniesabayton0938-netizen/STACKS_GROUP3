@@ -11,7 +11,7 @@ package stackvisualization;
  * Subject: ______________________________
  *
  * Last Modified: October 19, 2026
- * Version: 1.1
+ * Version: 1.3
  */
 public class Stack {
   private int [] elements;
@@ -47,5 +47,9 @@ public class Stack {
 
     return elements[top];
 }
-  
+  public boolean isEmpty(){
+  }    
+  public int size(){
+    return top +1;
+  }
 }
