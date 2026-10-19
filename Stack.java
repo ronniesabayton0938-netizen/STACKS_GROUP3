@@ -40,17 +40,20 @@ public class Stack {
     top--;
     return value;
   }
+  
   public int peek() {
     if (isEmpty()) {
        return -1;
     }
-
     return elements[top];
-}
+  }
+  
   public boolean isEmpty(){
     return top ==-1;
-  }    
+  }
+  
   public int size(){
     return top +1;
   }
+  
 }
