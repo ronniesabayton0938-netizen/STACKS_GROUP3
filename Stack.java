@@ -22,9 +22,23 @@ public class Stack {
     elements = new int[MAX_CAPACITY];
     top = -1;
   }
+  
   public boolean push(int value) {
     if (top == MAX_CAPACITY - 1) {
       return false;
     }
+    top++;
+    elements[top] = value;
+    return true;
   }
+  
+  public int pop(){
+    if (isEmpty()){
+      return -1;
+    }
+    int value = elements[top];
+    top--;
+    return value;
+  }
+  
 }
