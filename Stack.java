@@ -25,7 +25,6 @@ public boolean push(int value) {
   if (top == MAX_CAPACITY - 1) {
     return false;
   }
-  
   public Stack() {
     
   }
