@@ -15,7 +15,7 @@ import java.util.Random;
  * Subject:DATA STRUCTURES & ALGORITHM
  *
  * Last Modified: October 19, 2026
- * Version: 1.4
+ * Version: 1.5
  */
 
 public class StackGUI extends JFrame {
@@ -189,3 +189,23 @@ int value = stack.peek();
             );
         }
     }
+private void randomStack() {
+
+        stack.clear();
+
+        Random random = new Random();
+
+        int numberOfElements =
+                random.nextInt(stack.getCapacity()) + 1;
+
+        for (int i = 0; i < numberOfElements; i++) {
+
+            int value = random.nextInt(100) + 1;
+
+            stack.push(value);
+        }
+
+        statusLabel.setText(
+                "RANDOM: Generated "
+                + numberOfElements + " elements."
+        );
