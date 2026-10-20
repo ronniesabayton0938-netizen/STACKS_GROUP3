@@ -206,6 +206,39 @@ private void randomStack() {
         }
 
         statusLabel.setText(
+            updateStackDisplay();
+    }
+
+    private void updateStackDisplay() {
+
+        stackPanel.removeAll();
+
+        if (stack.isEmpty()) {
+
+            JLabel emptyLabel = new JLabel("EMPTY");
+
+            emptyLabel.setAlignmentX(
+                    Component.CENTER_ALIGNMENT
+            );
+
+            stackPanel.add(Box.createVerticalGlue());
+            stackPanel.add(emptyLabel);
+            stackPanel.add(Box.createVerticalGlue());
+
+        } else {
+
+            JLabel topLabel = new JLabel(
+                    "TOP -> " + stack.peek()
+            );
+
+            topLabel.setAlignmentX(
+                    Component.CENTER_ALIGNMENT
+            );
+
+            stackPanel.add(topLabel);
+            stackPanel.add(
+                    Box.createVerticalStrut(10)
+            );
                 "RANDOM: Generated "
                 + numberOfElements + " elements."
         );
