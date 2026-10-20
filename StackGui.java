@@ -15,7 +15,7 @@ import java.util.Random;
  * Subject:DATA STRUCTURES & ALGORITHM
  *
  * Last Modified: October 19, 2026
- * Version: 1.2
+ * Version: 1.3
  */
 
 public class StackGUI extends JFrame {
@@ -125,4 +125,33 @@ private void pushValue() {
     "Invalid input. Please enter an integer."
     );
     }
+}
+private void popValue() {
+
+    if (stack.isEmpty()) {
+
+            statusLabel.setText(
+                    "STACK UNDERFLOW: Cannot pop, stack is empty."
+            );
+
+            return;
+        }
+      int value = stack.pop();
+
+        statusLabel.setText(
+                "POP successful: " + value + " was removed."
+        );
+
+        updateStackDisplay();
     }
+
+    private void peekValue() {
+
+        if (stack.isEmpty()) {
+
+            statusLabel.setText(
+                    "EMPTY-STACK: There is no top element to peek."
+            );
+
+            return;
+        }
