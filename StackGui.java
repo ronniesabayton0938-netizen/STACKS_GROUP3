@@ -15,7 +15,7 @@ import java.util.Random;
  * Subject:DATA STRUCTURES & ALGORITHM
  *
  * Last Modified: October 19, 2026
- * Version: 1.1
+ * Version: 1.2
  */
 
 public class StackGUI extends JFrame {
