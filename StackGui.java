@@ -155,3 +155,37 @@ private void popValue() {
 
             return;
         }
+int value = stack.peek();
+
+        statusLabel.setText(
+                "PEEK: Top element is " + value + "."
+        );
+
+        updateStackDisplay();
+    }
+
+    private void clearStack() {
+
+        stack.clear();
+
+        statusLabel.setText("Stack cleared.");
+
+        updateStackDisplay();
+    }
+
+    private void checkStack() {
+
+        if (stack.isEmpty()) {
+
+            statusLabel.setText(
+                    "CHECK STACK: Stack is empty."
+            );
+
+        } else {
+
+            statusLabel.setText(
+                    "CHECK STACK: Stack is not empty. Size = "
+                    + stack.size()
+            );
+        }
+    }
