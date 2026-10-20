@@ -93,4 +93,36 @@ private void createGUI(){
         checkButton.addActionListener(e -> checkStack());
         randomButton.addActionListener(e -> randomStack());
 }
+private void pushValue() {
 
+    String input = inputField.getText().trim();
+
+    if (input.isEmpty()) {
+    statusLabel.setText("Please enter a value.");
+    return;
+    }
+
+    try {
+
+   int value = Integer.parseInt(input);
+
+    if (stack.push(value)) {
+    statusLabel.setText(
+    "PUSH successful: " + value + " was added."
+    );
+    inputField.setText("");
+    } else {
+    statusLabel.setText(
+    "STACK OVERFLOW: Cannot push, stack is full."
+    );
+    }
+
+    updateStackDisplay();
+
+    } catch (NumberFormatException ex) {
+
+    statusLabel.setText(
+    "Invalid input. Please enter an integer."
+    );
+    }
+    }
