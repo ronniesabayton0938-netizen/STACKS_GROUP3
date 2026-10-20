@@ -15,230 +15,283 @@ import java.util.Random;
  * Subject:DATA STRUCTURES & ALGORITHM
  *
  * Last Modified: October 19, 2026
- * Version: 1.6
+ * Version: 1.7
  */
 
 public class StackGUI extends JFrame {
 
-    private Stack stack;
+private Stack stack;
 
-    private JTextField inputField;
-    private JPanel stackPanel;
-    private JLabel statusLabel;
+private JTextField inputField;
+private JPanel stackPanel;
+private JLabel statusLabel;
 
-    private JButton pushButton;
-    private JButton popButton;
-    private JButton peekButton;
-    private JButton clearButton;
-    private JButton checkButton;
-    private JButton randomButton;
+private JButton pushButton;
+private JButton popButton;
+private JButton peekButton;
+private JButton clearButton;
+private JButton checkButton;
+private JButton randomButton;
 
-    public StackGUI() {
+public StackGUI() {
 
-        stack = new Stack();
+stack = new Stack();
 
-        setTitle("2D Stack Visualizer");
-        setSize(600, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+setTitle("2D Stack Visualizer");
+setSize(600, 700);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+setLocationRelativeTo(null);
 
-        createGUI();
-        updateStackDisplay();
-    }
+createGUI();
+updateStackDisplay();
+}
 
 private void createGUI(){
-    setLayout(new BorderLayout(10, 10));
+setLayout(new BorderLayout(10, 10));
 
-        JPanel topPanel = new JPanel();
+JPanel topPanel = new JPanel();
 
-        inputField = new JTextField(10);
+inputField = new JTextField(10);
 
-        pushButton = new JButton("PUSH");
-        popButton = new JButton("POP");
-        peekButton = new JButton("PEEK");
-        clearButton = new JButton("CLEAR");
-        checkButton = new JButton("CHECK STACK");
-        randomButton = new JButton("RANDOM");
+pushButton = new JButton("PUSH");
+popButton = new JButton("POP");
+peekButton = new JButton("PEEK");
+clearButton = new JButton("CLEAR");
+checkButton = new JButton("CHECK STACK");
+randomButton = new JButton("RANDOM");
 
-        topPanel.add(new JLabel("Value:"));
-        topPanel.add(inputField);
-        topPanel.add(pushButton);
-        topPanel.add(popButton);
-        topPanel.add(peekButton);
-        topPanel.add(clearButton);
-        topPanel.add(checkButton);
-        topPanel.add(randomButton);
+topPanel.add(new JLabel("Value:"));
+topPanel.add(inputField);
+topPanel.add(pushButton);
+topPanel.add(popButton);
+topPanel.add(peekButton);
+topPanel.add(clearButton);
+topPanel.add(checkButton);
+topPanel.add(randomButton);
 
-        add(topPanel, BorderLayout.NORTH);
+add(topPanel, BorderLayout.NORTH);
 
-        stackPanel = new JPanel();
-        stackPanel.setLayout(new BoxLayout(stackPanel, BoxLayout.Y_AXIS));
-        stackPanel.setBorder(
-                BorderFactory.createTitledBorder("STACK")
-        );
+stackPanel = new JPanel();
+stackPanel.setLayout(new BoxLayout(stackPanel, BoxLayout.Y_AXIS));
+stackPanel.setBorder(
+BorderFactory.createTitledBorder("STACK")
+);
 
-        add(stackPanel, BorderLayout.CENTER);
+add(stackPanel, BorderLayout.CENTER);
 
-        statusLabel = new JLabel(
-                "Stack is ready.",
-                SwingConstants.CENTER
-        );
+statusLabel = new JLabel(
+"Stack is ready.",
+SwingConstants.CENTER
+);
 
-        add(statusLabel, BorderLayout.SOUTH);
+add(statusLabel, BorderLayout.SOUTH);
 
-        pushButton.addActionListener(e -> pushValue());
-        popButton.addActionListener(e -> popValue());
-        peekButton.addActionListener(e -> peekValue());
-        clearButton.addActionListener(e -> clearStack());
-        checkButton.addActionListener(e -> checkStack());
-        randomButton.addActionListener(e -> randomStack());
+pushButton.addActionListener(e -> pushValue());
+popButton.addActionListener(e -> popValue());
+peekButton.addActionListener(e -> peekValue());
+clearButton.addActionListener(e -> clearStack());
+checkButton.addActionListener(e -> checkStack());
+randomButton.addActionListener(e -> randomStack());
 }
 private void pushValue() {
 
-    String input = inputField.getText().trim();
+String input = inputField.getText().trim();
 
-    if (input.isEmpty()) {
-    statusLabel.setText("Please enter a value.");
-    return;
-    }
+if (input.isEmpty()) {
+statusLabel.setText("Please enter a value.");
+return;
+}
 
-    try {
+try {
 
-   int value = Integer.parseInt(input);
+int value = Integer.parseInt(input);
 
-    if (stack.push(value)) {
-    statusLabel.setText(
-    "PUSH successful: " + value + " was added."
-    );
-    inputField.setText("");
-    } else {
-    statusLabel.setText(
-    "STACK OVERFLOW: Cannot push, stack is full."
-    );
-    }
+if (stack.push(value)) {
+statusLabel.setText(
+"PUSH successful: " + value + " was added."
+);
+inputField.setText("");
+} else {
+statusLabel.setText(
+"STACK OVERFLOW: Cannot push, stack is full."
+);
+}
 
-    updateStackDisplay();
+updateStackDisplay();
 
-    } catch (NumberFormatException ex) {
+} catch (NumberFormatException ex) {
 
-    statusLabel.setText(
-    "Invalid input. Please enter an integer."
-    );
-    }
+statusLabel.setText(
+"Invalid input. Please enter an integer."
+);
+}
 }
 private void popValue() {
 
-    if (stack.isEmpty()) {
+if (stack.isEmpty()) {
 
-            statusLabel.setText(
-                    "STACK UNDERFLOW: Cannot pop, stack is empty."
-            );
+statusLabel.setText(
+"STACK UNDERFLOW: Cannot pop, stack is empty."
+);
 
-            return;
-        }
-      int value = stack.pop();
+return;
+}
+int value = stack.pop();
 
-        statusLabel.setText(
-                "POP successful: " + value + " was removed."
-        );
+statusLabel.setText(
+"POP successful: " + value + " was removed."
+);
 
-        updateStackDisplay();
-    }
+updateStackDisplay();
+}
 
-    private void peekValue() {
+private void peekValue() {
 
-        if (stack.isEmpty()) {
+if (stack.isEmpty()) {
 
-            statusLabel.setText(
-                    "EMPTY-STACK: There is no top element to peek."
-            );
+statusLabel.setText(
+"EMPTY-STACK: There is no top element to peek."
+);
 
-            return;
-        }
+return;
+}
 int value = stack.peek();
 
-        statusLabel.setText(
-                "PEEK: Top element is " + value + "."
-        );
+statusLabel.setText(
+"PEEK: Top element is " + value + "."
+);
 
-        updateStackDisplay();
-    }
+updateStackDisplay();
+}
 
-    private void clearStack() {
+private void clearStack() {
 
-        stack.clear();
+stack.clear();
 
-        statusLabel.setText("Stack cleared.");
+statusLabel.setText("Stack cleared.");
 
-        updateStackDisplay();
-    }
+updateStackDisplay();
+}
 
-    private void checkStack() {
+private void checkStack() {
 
-        if (stack.isEmpty()) {
+if (stack.isEmpty()) {
 
-            statusLabel.setText(
-                    "CHECK STACK: Stack is empty."
-            );
+statusLabel.setText(
+"CHECK STACK: Stack is empty."
+);
 
-        } else {
+} else {
 
-            statusLabel.setText(
-                    "CHECK STACK: Stack is not empty. Size = "
-                    + stack.size()
-            );
-        }
-    }
+statusLabel.setText(
+"CHECK STACK: Stack is not empty. Size = "
++ stack.size()
+);
+}
+}
 private void randomStack() {
 
-        stack.clear();
+stack.clear();
 
-        Random random = new Random();
+Random random = new Random();
 
-        int numberOfElements =
-                random.nextInt(stack.getCapacity()) + 1;
+int numberOfElements =
+random.nextInt(stack.getCapacity()) + 1;
 
-        for (int i = 0; i < numberOfElements; i++) {
+for (int i = 0; i < numberOfElements; i++) {
 
-            int value = random.nextInt(100) + 1;
+int value = random.nextInt(100) + 1;
 
-            stack.push(value);
+stack.push(value);
+}
+
+statusLabel.setText(
+updateStackDisplay();
+}
+
+private void updateStackDisplay() {
+
+stackPanel.removeAll();
+
+if (stack.isEmpty()) {
+
+JLabel emptyLabel = new JLabel("EMPTY");
+
+emptyLabel.setAlignmentX(
+Component.CENTER_ALIGNMENT
+);
+
+stackPanel.add(Box.createVerticalGlue());
+stackPanel.add(emptyLabel);
+stackPanel.add(Box.createVerticalGlue());
+
+} else {
+
+JLabel topLabel = new JLabel(
+"TOP -> " + stack.peek()
+);
+
+topLabel.setAlignmentX(
+Component.CENTER_ALIGNMENT
+);
+
+stackPanel.add(topLabel);
+stackPanel.add(
+Box.createVerticalStrut(10)
+);
+"RANDOM: Generated "
++ numberOfElements + " elements."
+);
+            
+for (int i = stack.size() - 1; i >= 0; i--) {
+
+JLabel block = new JLabel(
+String.valueOf(stack.get(i)),
+SwingConstants.CENTER
+);
+
+block.setPreferredSize(
+new Dimension(150, 45)
+);
+
+block.setMaximumSize(
+new Dimension(150, 45)
+);
+
+block.setMinimumSize(
+new Dimension(150, 45)
+);
+
+block.setOpaque(true);
+
+block.setBorder(
+BorderFactory.createLineBorder(
+Color.BLACK
+)
+);
+
+block.setAlignmentX(
+Component.CENTER_ALIGNMENT
+);
+
+stackPanel.add(block);
+stackPanel.add(
+Box.createVerticalStrut(5)
+                );
+            }
         }
 
-        statusLabel.setText(
-            updateStackDisplay();
-    }
+stackPanel.revalidate();
+stackPanel.repaint();
+}
 
-    private void updateStackDisplay() {
+public static void main(String[] args) {
 
-        stackPanel.removeAll();
+SwingUtilities.invokeLater(() -> {
 
-        if (stack.isEmpty()) {
+StackGUI gui = new StackGUI();
 
-            JLabel emptyLabel = new JLabel("EMPTY");
-
-            emptyLabel.setAlignmentX(
-                    Component.CENTER_ALIGNMENT
-            );
-
-            stackPanel.add(Box.createVerticalGlue());
-            stackPanel.add(emptyLabel);
-            stackPanel.add(Box.createVerticalGlue());
-
-        } else {
-
-            JLabel topLabel = new JLabel(
-                    "TOP -> " + stack.peek()
-            );
-
-            topLabel.setAlignmentX(
-                    Component.CENTER_ALIGNMENT
-            );
-
-            stackPanel.add(topLabel);
-            stackPanel.add(
-                    Box.createVerticalStrut(10)
-            );
-                "RANDOM: Generated "
-                + numberOfElements + " elements."
-        );
+gui.setVisible(true);
+});
+}
+}
